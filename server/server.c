@@ -6,7 +6,7 @@
 /*   By: lcosta-g <lcosta-g@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 22:09:45 by lcosta-g          #+#    #+#             */
-/*   Updated: 2025/01/20 14:11:59 by lcosta-g         ###   ########.fr       */
+/*   Updated: 2025/01/20 15:03:20 by lcosta-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static volatile t_message	g_message;
 static void	signal_handler(int signal, siginfo_t *info, void *context)
 {
 	(void)context;
-
 	if (!g_message.client_pid)
 		g_message.client_pid = info->si_pid;
 	// ! check this logic
