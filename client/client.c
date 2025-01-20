@@ -6,7 +6,7 @@
 /*   By: lcosta-g <lcosta-g@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 22:09:51 by lcosta-g          #+#    #+#             */
-/*   Updated: 2025/01/20 19:15:40 by lcosta-g         ###   ########.fr       */
+/*   Updated: 2025/01/20 19:28:48 by lcosta-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,27 @@ static void	confirmation_signal_handler(int signal);
 static void	exit_signal_handler(int signal);
 static void	send_message(int pid, char *msg);
 
+// ! study volatile variables and check norm rules for this
 static volatile t_client	g_client = {0, 0};
 
 int	main(int argc, char *argv[])
 {
+	pid_t	server_pid;
+
 	if (argc != 3 || !ft_strlen(argv[2]))
+	{
+		ft_printf("Usage: %s <server-pid> <message>\n", argv[0]);
 		return (EXIT_FAILURE);
+	}
+	server_pid = ft_atoi(argv[1]);
+	if (kill(server_pid, 0) == -1)
+	{
+		ft_printf("Invalid PID: %s\n", argv[1]);
+		return (EXIT_FAILURE);
+	}
 	signal(SIGUSR1, confirmation_signal_handler);
 	signal(SIGUSR2, exit_signal_handler);
-	send_message(ft_atoi(argv[1]), argv[2]);
+	send_message(server_pid, argv[2]);
 	while (42)
 		pause();
 	return (EXIT_SUCCESS);
