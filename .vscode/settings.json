@@ -1,0 +1,10 @@
+{
+	"files.associations": {
+		".env*": "dotenv",
+		"unistd.h": "c",
+		"stdio.h": "c",
+		"minitalk.h": "c",
+		"libft.h": "c",
+		"ft_printf_bonus.h": "c"
+	}
+}
