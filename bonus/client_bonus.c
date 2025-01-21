@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcosta-g <lcosta-g@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 22:09:51 by lcosta-g          #+#    #+#             */
-/*   Updated: 2025/01/20 19:28:48 by lcosta-g         ###   ########.fr       */
+/*   Updated: 2025/01/21 18:35:42 by lcosta-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minitalk.h"
+#include "../minitalk_bonus.h"
 
 static void	await_confirmation(void);
 static void	confirmation_signal_handler(int signal);
 static void	exit_signal_handler(int signal);
 static void	send_message(int pid, char *msg);
 
-// ! study volatile variables and check norm rules for this
-static volatile t_client	g_client = {0, 0};
+static volatile t_client	g_client;
 
 int	main(int argc, char *argv[])
 {
@@ -38,8 +37,6 @@ int	main(int argc, char *argv[])
 	signal(SIGUSR1, confirmation_signal_handler);
 	signal(SIGUSR2, exit_signal_handler);
 	send_message(server_pid, argv[2]);
-	while (42)
-		pause();
 	return (EXIT_SUCCESS);
 }
 
@@ -89,9 +86,6 @@ static void	send_message(int pid, char *msg)
 	}
 }
 
-// TODO improve this code
-// ! pause() is not working properly
-// ! infinite loop is not the best way too handle this too
 static void	await_confirmation(void)
 {
 	while (!g_client.server_confirmation)

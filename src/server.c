@@ -6,7 +6,7 @@
 /*   By: lcosta-g <lcosta-g@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 22:09:45 by lcosta-g          #+#    #+#             */
-/*   Updated: 2025/01/20 19:28:49 by lcosta-g         ###   ########.fr       */
+/*   Updated: 2025/01/21 17:42:54 by lcosta-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 static void	signal_handler(int signal, siginfo_t *info, void *context);
 static void	clean_message(void);
 
-static volatile t_message	g_message = {0, 0, 0};
+static volatile t_message	g_message;
 
 int	main(void)
 {
