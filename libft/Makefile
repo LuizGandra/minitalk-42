@@ -24,26 +24,26 @@ FT_PRINTF_OBJECTS := \
 all: $(NAME)
 
 $(NAME): $(OBJECTS) $(FT_PRINTF_OBJECTS)
-	@$(AR) $(ARFLAGS) $@ $^
+	$(AR) $(ARFLAGS) $@ $^
 
 %.o: %.c $(HEADERS)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(FT_PRINTF_OBJECTS):
-	@$(MAKE) -C ft_printf
+	$(MAKE) -C ft_printf
 
 clean:
-	@$(MAKE) -C ft_printf clean
-	@$(RM) $(OBJECTS)
+	$(MAKE) -C ft_printf clean
+	$(RM) $(OBJECTS)
 
 fclean: clean
-	@$(MAKE) -C ft_printf fclean
-	@$(RM) $(NAME)
+	$(MAKE) -C ft_printf fclean
+	$(RM) $(NAME)
 
 re: fclean all
 	$(MAKE) -C ft_printf re
 
 norm:
-	@norminette -R CheckForbiddenSourceHeader
+	norminette -R CheckForbiddenSourceHeader
 
 .PHONY: all ft_printf clean fclean re norm
