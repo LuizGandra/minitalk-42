@@ -6,14 +6,14 @@
 /*   By: lcosta-g <lcosta-g@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 22:10:03 by lcosta-g          #+#    #+#             */
-/*   Updated: 2025/01/21 18:35:47 by lcosta-g         ###   ########.fr       */
+/*   Updated: 2025/03/06 19:40:02 by lcosta-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINITALK_BONUS_H
 # define MINITALK_BONUS_H
 
-# include "libft/libft.h"
+# include "libft.h"
 # include <signal.h>
 # include <unistd.h>
 # include <stdlib.h>
