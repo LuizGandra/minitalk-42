@@ -36,9 +36,9 @@ Minitalk consists of two programs: a server and a client. The server receives me
 
 ### Prerequisites
 
-- C compiler (e.g., `clang`)
-- `make` utility
-- `libft` library in the project root
+- C compiler (e.g., `clang`).
+- `make` utility.
+- `libft` library in the project root.
 
 ### How to Build and Run
 
