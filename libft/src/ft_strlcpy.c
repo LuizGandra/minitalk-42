@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcosta-g <lcosta-g@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/19 22:10:03 by lcosta-g          #+#    #+#             */
-/*   Updated: 2025/03/06 19:37:57 by lcosta-g         ###   ########.fr       */
+/*   Created: 2024/10/09 13:09:35 by lcosta-g          #+#    #+#             */
+/*   Updated: 2025/03/06 18:38:33 by lcosta-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include "libft.h"
-# include <signal.h>
-# include <unistd.h>
-# include <stdlib.h>
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+{
+	size_t	i;
 
-typedef struct s_message {
-	unsigned int	byte_i;
-	unsigned char	current_char;
-	pid_t			client_pid;
-}	t_message;
-
-typedef struct s_client {
-	unsigned int	bits_count;
-	unsigned int	server_confirmation;
-}	t_client;
-
-#endif
+	if (size > 0)
+	{
+		i = 0;
+		while (src[i] && i < (size - 1))
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
+	}
+	return (ft_strlen(src));
+}

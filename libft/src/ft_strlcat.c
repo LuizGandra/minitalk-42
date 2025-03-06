@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcosta-g <lcosta-g@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/19 22:10:03 by lcosta-g          #+#    #+#             */
-/*   Updated: 2025/03/06 19:37:57 by lcosta-g         ###   ########.fr       */
+/*   Created: 2024/10/09 13:09:31 by lcosta-g          #+#    #+#             */
+/*   Updated: 2025/03/06 18:38:28 by lcosta-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include "libft.h"
-# include <signal.h>
-# include <unistd.h>
-# include <stdlib.h>
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
+{
+	size_t	dst_len;
+	size_t	src_len;
+	size_t	i;
 
-typedef struct s_message {
-	unsigned int	byte_i;
-	unsigned char	current_char;
-	pid_t			client_pid;
-}	t_message;
-
-typedef struct s_client {
-	unsigned int	bits_count;
-	unsigned int	server_confirmation;
-}	t_client;
-
-#endif
+	dst_len = ft_strlen(dst);
+	src_len = ft_strlen(src);
+	if (size <= dst_len)
+		return (size + src_len);
+	i = 0;
+	while (src[i] && i < (size - dst_len - 1))
+	{
+		dst[dst_len + i] = src[i];
+		i++;
+	}
+	dst[dst_len + i] = '\0';
+	return (dst_len + src_len);
+}

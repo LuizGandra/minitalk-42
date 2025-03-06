@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcosta-g <lcosta-g@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/19 22:10:03 by lcosta-g          #+#    #+#             */
-/*   Updated: 2025/03/06 19:37:57 by lcosta-g         ###   ########.fr       */
+/*   Created: 2024/10/09 13:09:59 by lcosta-g          #+#    #+#             */
+/*   Updated: 2025/03/06 18:35:12 by lcosta-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
+#include <stdio.h>
 
-# include "libft.h"
-# include <signal.h>
-# include <unistd.h>
-# include <stdlib.h>
+long long	ft_atol(const char *nptr)
+{
+	long long	n;
+	int			sign;
 
-typedef struct s_message {
-	unsigned int	byte_i;
-	unsigned char	current_char;
-	pid_t			client_pid;
-}	t_message;
-
-typedef struct s_client {
-	unsigned int	bits_count;
-	unsigned int	server_confirmation;
-}	t_client;
-
-#endif
+	n = 0;
+	sign = 1;
+	while ((*nptr >= '\t' && *nptr <= '\r') || *nptr == ' ')
+		nptr++;
+	if (*nptr == '-' || *nptr == '+')
+	{
+		if (*nptr == '-')
+			sign = -1;
+		nptr++;
+	}
+	while (ft_isdigit(*nptr))
+	{
+		n *= 10;
+		n += *nptr - '0';
+		nptr++;
+	}
+	return (n * sign);
+}

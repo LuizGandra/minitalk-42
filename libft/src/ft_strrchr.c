@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcosta-g <lcosta-g@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/19 22:10:03 by lcosta-g          #+#    #+#             */
-/*   Updated: 2025/03/06 19:37:57 by lcosta-g         ###   ########.fr       */
+/*   Created: 2024/10/09 13:11:44 by lcosta-g          #+#    #+#             */
+/*   Updated: 2025/03/06 18:39:04 by lcosta-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include "libft.h"
-# include <signal.h>
-# include <unistd.h>
-# include <stdlib.h>
+char	*ft_strrchr(const char *s, int c)
+{
+	int	i;
 
-typedef struct s_message {
-	unsigned int	byte_i;
-	unsigned char	current_char;
-	pid_t			client_pid;
-}	t_message;
-
-typedef struct s_client {
-	unsigned int	bits_count;
-	unsigned int	server_confirmation;
-}	t_client;
-
-#endif
+	i = ft_strlen(s);
+	while (i >= 0)
+	{
+		if (s[i] == (unsigned char)c)
+			return ((char *)&s[i]);
+		i--;
+	}
+	return (NULL);
+}

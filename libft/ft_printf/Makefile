@@ -1,26 +1,35 @@
-CFLAGS := -Wall -Werror -Wextra
+CC := clang
+CFLAGS := -Wall -Wextra -Werror
 ARFLAGS := -rcs
 RM := rm -rf
-HEADERS := ft_printf_bonus.h
-SOURCES := \
-	ft_printf_bonus.c utils_bonus.c ft_putaddress_bonus.c ft_puthex_bonus.c \
-	ft_putchar_bonus.c ft_putnbr_bonus.c ft_putstr_bonus.c
-OBJECTS := $(SOURCES:.c=.o)
 
-all: $(OBJECTS)
+SRC_DIR := src
+OBJ_DIR := ../build
 
-%.o: %.c $(HEADERS)
-	$(CC) $(CFLAGS) -c $< -o $@
+INCLUDE_DIR := include
 
-clean:
-	$(RM) $(OBJECTS)
+INCLUDES := -I$(INCLUDE_DIR)
 
-fclean: clean
-	$(RM) $(NAME)
+HEADERS := $(INCLUDE_DIR)/ft_printf_bonus.h
 
-re: fclean all
+SRCS := \
+	ft_printf_bonus.c \
+	ft_putchar_bonus.c \
+	ft_putaddress_bonus.c \
+	ft_puthex_bonus.c \
+	ft_putnbr_bonus.c \
+	ft_putstr_bonus.c \
+	utils_bonus.c
+SRCS := $(addprefix $(SRC_DIR)/, $(SRCS))
+	
+OBJS := $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.c=.o)))
 
-norm:
-	norminette -R CheckForbiddenSourceHeader
+all: $(OBJ_DIR) $(OBJS)
 
-.PHONY: all clean fclean re norm
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS)
+	$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)
+
+$(OBJ_DIR):
+	mkdir -p $@
+
+.PHONY: all

@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcosta-g <lcosta-g@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/19 22:10:03 by lcosta-g          #+#    #+#             */
-/*   Updated: 2025/03/06 19:37:57 by lcosta-g         ###   ########.fr       */
+/*   Created: 2024/10/09 13:17:49 by lcosta-g          #+#    #+#             */
+/*   Updated: 2025/03/06 18:37:46 by lcosta-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include "libft.h"
-# include <signal.h>
-# include <unistd.h>
-# include <stdlib.h>
+static void	write_number(long long n, int fd)
+{
+	char	c;
 
-typedef struct s_message {
-	unsigned int	byte_i;
-	unsigned char	current_char;
-	pid_t			client_pid;
-}	t_message;
+	if (n > 9)
+		write_number(n / 10, fd);
+	c = (n % 10) + '0';
+	ft_putchar_fd(c, fd);
+}
 
-typedef struct s_client {
-	unsigned int	bits_count;
-	unsigned int	server_confirmation;
-}	t_client;
+void	ft_putnbr_fd(int n, int fd)
+{
+	long long	long_n;
 
-#endif
+	long_n = n;
+	if (long_n < 0)
+	{
+		long_n = -long_n;
+		ft_putchar_fd('-', fd);
+	}
+	write_number(long_n, fd);
+}
