@@ -1,8 +1,8 @@
 # Minitalk - Inter-Process Communication with Unix Signals
 
-![42 São Paulo](https://img.shields.io/badge/42-São_Paulo-black?style=flat-square&logo=42)
-
 Minitalk is a project from the [42 São Paulo](https://www.42sp.org.br/) Common Core curriculum. It implements a simple communication system between a server and a client using UNIX signals to transmit messages.
+
+![42 São Paulo](https://img.shields.io/badge/42-São_Paulo-black?style=flat-square&logo=42)
 
 ## About 42
 
