@@ -1,4 +1,4 @@
-# Minitalk - Inter-Process Communication with Signals
+# Minitalk - Inter-Process Communication with Unix Signals
 
 ![42 São Paulo](https://img.shields.io/badge/42-São_Paulo-black?style=flat-square&logo=42)
 
@@ -13,6 +13,8 @@ Minitalk is a project from the [42 São Paulo](https://www.42sp.org.br/) Common 
 Minitalk consists of two programs: a server and a client. The server receives messages from the client via UNIX signals (`SIGUSR1` and `SIGUSR2`), decoding and displaying them. The client sends messages to the server by converting text into binary signals. It’s divided into:
 - **Mandatory Part**: Basic server-client communication.
 - **Bonus Part**: Enhanced version with acknowledgment and additional features.
+
+**Note:** Although a bonus directory exists, the mandatory part already fulfills the bonus requirements (e.g., acknowledgment via signals). Thus, the bonus part is merely a duplicate of the mandatory part.
 
 ### Key Features
 
@@ -78,8 +80,8 @@ Minitalk consists of two programs: a server and a client. The server receives me
 - `src/server.c`: server logic for receiving signals.
 - `src/client.c`: client logic for sending signals.
 - `minitalk_bonus.h`: header for bonus part.
-- `bonus/server_bonus.c`: enhanced server with acknowledgment.
-- `bonus/client_bonus.c`: enhanced client with feedback.
+- `bonus/server_bonus.c`: `src/server.c` copy.
+- `bonus/client_bonus.c`: `src/client.c` copy.
 - `Makefile`: compilation automation.
 - `libft/`: directory for the libft library.
 
