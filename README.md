@@ -71,7 +71,7 @@ Minitalk consists of two programs: a server and a client. The server receives me
 #### Additional commands
 
 - `make clean`: remove object files.
-- `make fclean`: remove `libft.a` and object files.
+- `make fclean`: remove the program and object files.
 - `make re`: rebuild everything.
 
 ## Project Structure
